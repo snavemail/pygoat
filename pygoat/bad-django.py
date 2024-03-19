@@ -11,7 +11,7 @@ def index(request):
 def exec_cmd(request):
     if request.method == "POST":
         cmd = request.POST.get("cmd", "")
-        output = subprocess.check_output(cmd, shell=True)
+        output = subprocess.check_output(cmd, shell=False)
         return HttpResponse(output.decode())
     else:
         return render(request, "exec_cmd.html")
